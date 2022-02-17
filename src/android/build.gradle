@@ -26,14 +26,19 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 30
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 30
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -54,6 +59,7 @@ rootProject.subprojects {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.facebook.react:react-native:+'
     implementation "com.pushwoosh:pushwoosh:${pushwoosh}"
     implementation "com.pushwoosh:pushwoosh-firebase:${pushwoosh}"
